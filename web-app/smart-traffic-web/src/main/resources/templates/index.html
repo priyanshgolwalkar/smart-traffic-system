@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Traffic Dashboard</title>
+</head>
+<body>
+
+<h2>Smart Traffic Dashboard</h2>
+
+<form action="/search">
+    <input type="text" name="vehicleId" placeholder="Search Vehicle">
+    <button type="submit">Search</button>
+</form>
+
+<form action="/filter">
+    <select name="zone">
+        <option value="Pune-West">Pune-West</option>
+        <option value="Pune-East">Pune-East</option>
+        <option value="Mumbai">Mumbai</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th>Vehicle</th>
+        <th>Speed</th>
+        <th>Zone</th>
+        <th>Fine</th>
+    </tr>
+
+    <tr th:each="v : ${violations}">
+        <td th:text="${v.vehicleId}"></td>
+        <td th:text="${v.speed}"></td>
+        <td th:text="${v.zone}"></td>
+        <td th:text="${v.fine}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
